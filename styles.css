@@ -1,0 +1,143 @@
+:root{
+  --bg1:#fff0f6;
+  --bg2:#ffe3ee;
+  --card:#ffffffcc;
+  --text:#2b2b2b;
+
+  --pink:#ff4d88;
+  --pink2:#ff8fb3;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color:var(--text);
+  background: radial-gradient(circle at top, var(--bg1), var(--bg2));
+  overflow-x:hidden;
+
+  /* iPhone safe area */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Fondo de corazones reales (SVG repetido) */
+.hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ff4d88' fill-opacity='0.20' d='M12 21s-6-4.35-9-8.28C-1 7.5 3.5 2 8.5 5.5 10 6.6 12 8.5 12 8.5s2-1.9 3.5-3C20.5 2 25 7.5 21 12.72 18 16.65 12 21 12 21z'/%3E%3C/svg%3E");
+  background-size: 90px 90px;
+  background-repeat: repeat;
+  opacity: .9;
+  filter: blur(.15px);
+}
+
+.wrap{
+  min-height:100%;
+  display:grid;
+  place-items:center;
+  padding:24px 14px;
+}
+
+.card{
+  width:min(520px, 94vw);
+  background:var(--card);
+  border:2px solid rgba(255,77,136,.20);
+  border-radius:22px;
+  padding:18px 16px 16px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.10);
+  backdrop-filter: blur(8px);
+}
+
+.media-area{
+  display:flex;
+  justify-content:center;
+  margin-bottom:14px;
+}
+
+.main-gif{
+  width:min(360px, 86vw);
+  height:auto;
+  border-radius:18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.15);
+  display:block;
+}
+
+.title{
+  margin:6px 0 14px;
+  text-align:center;
+  font-size: clamp(22px, 4.3vw, 30px);
+  line-height:1.15;
+}
+
+/* Botones juntos SÍ O SÍ */
+.buttons{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin:10px 0 12px;
+}
+
+.btn{
+  appearance:none;
+  border:none;
+  padding:14px 18px;
+  border-radius:14px;
+  font-size:18px;
+  font-weight:800;
+  min-width:120px;
+  cursor:pointer;
+  touch-action:manipulation;
+  transition: transform .12s ease, filter .12s ease;
+  box-shadow: 0 10px 18px rgba(0,0,0,.10);
+}
+
+.btn:active{ transform: scale(.98); }
+
+.yes{
+  background: linear-gradient(135deg, var(--pink), var(--pink2));
+  color:white;
+}
+
+.no{
+  background: #fff;
+  border:2px solid rgba(255,77,136,.28);
+  color:#b0124a;
+}
+
+/* Se activa SOLO cuando empieza a escapar */
+.floating-no{
+  position: fixed;
+  z-index: 9999;
+}
+
+.result{
+  margin-top:10px;
+  padding:12px 12px;
+  border-radius:14px;
+  background: rgba(255, 255, 255, .7);
+  border:1px solid rgba(255,77,136,.25);
+  text-align:center;
+  animation: popIn .22s ease-out;
+}
+
+@keyframes popIn{
+  from{ transform: translateY(6px); opacity:0; }
+  to{ transform: translateY(0); opacity:1; }
+}
+
+.footer{
+  margin-top:12px;
+  font-size:12px;
+  opacity:.75;
+  text-align:center;
+}
+
+/* Accesibilidad: reducir animaciones */
+@media (prefers-reduced-motion: reduce){
+  .btn{ transition:none; }
+}

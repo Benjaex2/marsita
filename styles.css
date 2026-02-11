@@ -64,7 +64,9 @@ body{
   border-radius:18px;
   box-shadow: 0 12px 30px rgba(0,0,0,.15);
   display:block;
+  transition: opacity .3s ease;
 }
+
 
 .title{
   margin:6px 0 14px;

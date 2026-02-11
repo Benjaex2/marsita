@@ -1,6 +1,7 @@
 const yesBtn = document.getElementById("yesBtn");
 const noBtn  = document.getElementById("noBtn");
 const result = document.getElementById("result");
+const mainGif = document.getElementById("mainGif");
 
 let isFloating = false;
 
@@ -83,6 +84,14 @@ noBtn.addEventListener("pointerdown", (e) => {
 });
 
 yesBtn.addEventListener("click", () => {
+  // Cambiar GIF
+  mainGif.style.opacity = "0";
+
+  setTimeout(() => {
+    mainGif.src = "./gifs/yippee-cat.gif";
+    mainGif.style.opacity = "1";
+  }, 200);
+
   result.hidden = false;
   yesBtn.disabled = true;
   noBtn.style.display = "none";
